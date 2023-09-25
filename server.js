@@ -3,7 +3,7 @@
  * 
  * You can run it using "npm run dev" in the terminal
  * 
- * Open http://localhost:3001/ and it should serve you whats on line 17-18
+ * Open http://localhost:3001/ and it should serve you whats on line 32
  * 
  * All this is doing is create paths called "routes" which are called 
  * like functions which  serve content or do some type of operation.
