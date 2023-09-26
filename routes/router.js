@@ -1,3 +1,4 @@
+// These are imports, "require" is a fancy node way of saying import a file.
 const express = require('express')
 const router = express.Router();
 const controller = require('../controller/controller')
@@ -14,6 +15,7 @@ const controller = require('../controller/controller')
  * a route like http://localhost:3001/api/random
  * 
  * It doesn't do anything till you define a handler function.
+ * These are defined in the controller/controller.js directory.
  * 
  */
 router.get('/search', controller.search)
