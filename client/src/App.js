@@ -8,6 +8,7 @@ import NoPage from './pages/NoPage';
 import EditProfile from './pages/EditProfile';
 import Search from './pages/Search';
 import Show from './pages/Show';
+import {UserProvider} from './context/UserContext'
 /**
  * Represents the app.
  * Has a router which determines which page is displayed for a given path.
@@ -15,6 +16,7 @@ import Show from './pages/Show';
  */
 function App() {
   return (
+    <UserProvider>
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Layout/>}>
@@ -22,12 +24,13 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="profile" element={<Profile />} />
           <Route path="edit" element={<EditProfile />} />
-          <Route path="search" element={<Search />} />
-          <Route path="show" element={<Show />} />
+          <Route path="search/:name" element={<Search />} />
+          <Route path="show/:id" element={<Show />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
+    </UserProvider>
   );
 }
 
