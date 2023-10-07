@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
  */
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <div className='p-2 bg-danger'>Footer</div>
   )
 }
 

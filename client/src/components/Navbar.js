@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
  */
 const Navbar = () => {
   return (
-    <div>Navbar</div>
+    <div className='bg-danger p-3 position-fixed w-100'>Navbar</div>
   )
 }
 

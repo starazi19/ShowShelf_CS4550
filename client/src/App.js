@@ -5,6 +5,9 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import NoPage from './pages/NoPage';
+import EditProfile from './pages/EditProfile';
+import Search from './pages/Search';
+import Show from './pages/Show';
 /**
  * Represents the app.
  * Has a router which determines which page is displayed for a given path.
@@ -18,6 +21,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="edit" element={<EditProfile />} />
+          <Route path="search" element={<Search />} />
+          <Route path="show" element={<Show />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

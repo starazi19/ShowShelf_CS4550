@@ -8,11 +8,13 @@ import Footer from "../components/Footer"
  */
 const Layout = () => {
   return (
-    <main>
+    <div className="d-flex text-white wd-bg flex-column container-fluid">
         <Navbar/>
+        <main className="bg-dark flex-grow-1 mt-5 pt-4">
         <Outlet/>
+        </main>
         <Footer/>
-    </main>
+    </div>
   )
 }
 

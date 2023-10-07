@@ -4,9 +4,16 @@ import React from 'react'
  * @returns the Home Page.
  */
 const Home = () => {
+  const user = true;
+  if(user) {
   return (
-    <div>Home</div>
+    <div>Logged In</div>
   )
+} else {
+  return (
+    <div>No User</div>
+  )
+}
 }
 
 export default Home

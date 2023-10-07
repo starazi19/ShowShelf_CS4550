@@ -8,6 +8,11 @@
  * 
  * To send stuff back to the browser, we sometimes use res.send(content)
  */
+
+exports.register = async(req, res) => {
+    //Add the user to the database
+    console.log("User registered")
+}
 exports.search = async(req, res) => {
     res.send("I am searching!")
 }

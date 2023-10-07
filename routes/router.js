@@ -19,5 +19,6 @@ const controller = require('../controller/controller')
  * 
  */
 router.get('/search', controller.search)
+router.post('/register', controller.register)
 
 module.exports = router
