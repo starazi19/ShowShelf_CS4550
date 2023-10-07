@@ -11,7 +11,8 @@
 
 exports.register = async(req, res) => {
     //Add the user to the database
-    console.log("User registered")
+    console.log(req.body)
+    res.send(`Username: ${username}, Password: ${password}`)
 }
 exports.search = async(req, res) => {
     res.send("I am searching!")

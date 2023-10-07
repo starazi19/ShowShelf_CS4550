@@ -27,6 +27,7 @@
 const express = require('express')
 const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
+const bodyParser = require('body-parser')
 const app = express();
 const cors = require('cors')
 const path = require('path')
@@ -50,6 +51,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname));
 app.use(cookieParser());
+app.use(bodyParser.urlencoded({extended: true}));
 
 const myusername = 'user' //username for website (no database yet to store users)
 const mypassword = 'pass' //password for website (no database yet to store users)
