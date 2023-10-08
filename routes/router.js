@@ -18,6 +18,7 @@ const controller = require('../controller/controller')
  * These are defined in the controller/controller.js directory.
  * 
  */
+router.post('/login', controller.login)
 router.get('/search', controller.search)
 router.post('/register', controller.register)
 

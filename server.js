@@ -24,10 +24,10 @@
  * Give it a try ;)
  * 
  */
+const mongoose = require('mongoose');
 const express = require('express')
 const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
-const bodyParser = require('body-parser')
 const app = express();
 const cors = require('cors')
 const path = require('path')
@@ -46,26 +46,30 @@ app.use(sessions({
     resave: false
 }));
 app.use(cors());
-app.use('/api', routes);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname));
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use('/api', routes);
 
-const myusername = 'user' //username for website (no database yet to store users)
-const mypassword = 'pass' //password for website (no database yet to store users)
+mongoose.connect(`mongodb+srv://admin:${process.env.DB_PASSWORD}@showshelf.qvcuviz.mongodb.net/showshelf`).then(console.log("Connection Successful"))
+.catch(e => console.log("Connection failed"))
+
+//const myusername = 'user' //username for website (no database yet to store users)
+//const mypassword = 'pass' //password for website (no database yet to store users)
 
 /**
  * This '/' route represents the default/"home" page AKA the first page you
  * see when u visit http://localhost:3001 or any domain.
  */
+/*
 app.get('/',(req,res) => {
     if(req.session.user){
         res.redirect('/protected')
     }else
     res.sendFile('views/index.html',{root:__dirname})
 });
+*/
 
 /**
  * This function is called a middleware.
@@ -78,6 +82,7 @@ app.get('/',(req,res) => {
  * @returns an unauthorized page if the user isn't logged in else the 
  * next function.
  */
+
 const auth = function(req, res, next) {
     if (req.session && req.session.user) {
         return next();
@@ -86,7 +91,8 @@ const auth = function(req, res, next) {
     }
 }
 
-app.post('/user',(req,res) => {
+
+/*app.post('/user',(req,res) => {
     if(req.body.username == myusername && req.body.password == mypassword){
         req.session.user = req.body.username
         console.log(req.session)
@@ -96,6 +102,7 @@ app.post('/user',(req,res) => {
         res.send('Invalid username or password');
     }
 })
+*/
 
 app.get('/protected', auth, function (req, res) {
     res.send(`Welcome ${req.session.user} <a href=\'/logout'>click to logout</a>`)
