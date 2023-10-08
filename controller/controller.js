@@ -12,8 +12,28 @@ const bcrypt = require("bcrypt")
 
 exports.login = async(req, res) => {
     const {username, password} = req.body
-    req.session.user = username
-    res.send('User Logged In')
+    try {
+        User.findOne({username : username}).then(async (user) => {
+            const isUser = await bcrypt.compare(password, user.password)
+            if(isUser) {
+                req.session.user = username
+                res.send(`Welcome ${username}`)
+            } else {
+                res.send('Wrong Password')
+            }
+        })
+    } catch {
+        res.status(500).send("User doesn't exist")
+    }
+    
+    /*
+    const isUser = await bcrypt.compare(password, user.password)
+    if(isUser) {
+        req.session.user = username
+        res.send(`Welcome ${username}`)
+    }
+    res.send('Wrong Password')
+    */
 }
 
 /**
@@ -25,7 +45,7 @@ exports.register = async(req, res) => {
     //Add the user to the database
     let {username, password} = req.body
     password = await bcrypt.hash(password, 10);
-    await User.create({username, password, role: 'user'})
+    await User.create({username, password, admin: false}).catch(() => res.status(500).send('User exists'))
     req.session.user = username
     res.send('User registered')
 }
